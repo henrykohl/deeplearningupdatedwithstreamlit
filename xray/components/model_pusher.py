@@ -10,7 +10,7 @@ class ModelPusher:
     def __init__(self,model_pusher_config: ModelPusherConfig):
 
         self.model_pusher_config = model_pusher_config
-        self.s3 = S3Operation()
+        self.s3 = S3Operation() ## 新增
 
 
     
@@ -31,7 +31,7 @@ class ModelPusher:
                 "model.pt",
                 "lungxray24",
                 remove=False,
-            )
+            ) ## 新增
             logging.info("Uploaded best model to s3 bucket")
             logging.info("Exited initiate_model_pusher method of ModelTrainer class")
 
