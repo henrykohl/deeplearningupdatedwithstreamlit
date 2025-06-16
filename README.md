@@ -34,11 +34,12 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 > 3. 檢視 `/xray/cloud_storage/s3_ops.py`
 > > * 使用 boto3 來連接 s3
 >
-> 4. 建立 virtual environment: `conda create -p venv python=3.8 -y`
+> 4. 建立 virtual environment: `conda create -p venv python=3.8 -y` (1:56:45)
 >
-> 5. 執行 `source activate ./venv`
+> 5. 執行 `source activate ./venv` (1:57:40)
+> > * 執行 `pip list`
 >
-> 6. 執行 `pip install -r requirments.txt`
+> 6. 執行 `pip install -r requirments.txt` (1:58:00)
 >
 > 7. 執行 `streamlit run app.py`，後開啟 web APP (2:00:50)
 >
