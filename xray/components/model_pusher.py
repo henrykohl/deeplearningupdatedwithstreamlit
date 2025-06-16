@@ -27,10 +27,10 @@ class ModelPusher:
         try:
             # Uploading the best model to s3 bucket
             self.s3.upload_file(
-                "model/model.pt",
-                "model.pt",
-                "lungxray24",
-                remove=False,
+                "model/model.pt", # 來源地檔案
+                "model.pt",       # 目的地檔案
+                "lungxray24",     # bucket 名稱
+                remove=False,     # boolean 
             ) ## 新增
             logging.info("Uploaded best model to s3 bucket")
             logging.info("Exited initiate_model_pusher method of ModelTrainer class")
