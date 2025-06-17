@@ -51,12 +51,6 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 * Error : RuntimeError: Tried to instantiate class ‘__path__._path’, but it does not exist! Ensure that it is registered via torch::class_
 
-* 以下方式沒辦法解決以上問題
-> ```python
-> import os
-> os.environ["STREAMLIT_SERVER_ENABLE_FILE_WATCHER"] = "false"  # Disables problematic inspection
-> ```
-
 * Reference Solution 1: [Fixing the “RuntimeError: Tried to instantiate class ‘__path__._path’...](https://medium.com/@subash_68978/1b4d1d99509d)
 
 * Reference Solution 2: [Trying to import torch results in asyncio RuntimeError](https://github.com/streamlit/streamlit/issues/10992)
