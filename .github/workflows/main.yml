@@ -31,7 +31,7 @@ jobs:
       
 
 
-
+  # push to my Docker Hub
   push_to_registry:
     name: Push Docker image to Docker hub
     runs-on: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
 
-
+  # use (my) selfhosted runner
   Continuous-Deployment:
     needs: push_to_registry
     runs-on: self-hosted

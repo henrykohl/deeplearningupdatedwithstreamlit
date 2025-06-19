@@ -15,7 +15,7 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 ## pipeline is completed
 
-## Lecture Note 
+## Lecture Note (Lecture 6)
 
 * Lecture Video -- [Evaluate and Deploy Deep Learning Models to the Cloud](https://www.youtube.com/watch?v=jk_YAsI9z5w)
 
@@ -46,6 +46,85 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 > 8. google 一張 'pneumonia lungs x ray' 的 jpeg 圖，將其下載，
 >
 > 9. 將 jpeg 檔上傳至 web APP -- 檔案將存到 `/images/input.jpeg`
+
+## Lecture 7 -- [Deployment with CI-CD pipeline - part1](https://www.youtube.com/watch?v=Tm49jrcKRyI)
+
+* 根據 [Github: Xray lung classifier](https://github.com/henrykohl/deeplearningupdatedwithstreamlit)
+
+* 開啟 terminal，使用 Git bash
+  > ```bash
+  > source activate base
+  > source activate ./venv
+  > ```
+
+* 建立 `Dockerfile` 檔案
+  > 更多細節，參見 [MLOps Foundations.](https://www.youtube.com/playlist?list=PLmQAMKHKeLZ9iaLWBULDE_hiPtOiHiDz0)
+
+* 建立 `.dockerignore`
+
+* 建立 `.github/workflows/main.yml`
+
+* Docker workflow (17:20)
+  > 1. Source code
+  > 
+  > 2. Build docker image
+  > 
+  > 3. Push to the Docker hub
+  > 
+  > 4. Create AWS EC2 instance
+  > 
+  > 5. Create the IAM USER (have access to the EC2)
+  > 
+  > 6. Launch docker to the Ec2
+
+  > workflow(yaml)
+  >
+  > > CI/CD (1: continuous integration/continuous delivery)/CD (2: continuous deployment)
+  > 
+  > > > 1: github action -- provide you the server 
+  > > >
+  > > > 2: EC2(self-hosted runner) 此 project 的 continuous deployment 不使用 github action server
+
+* 完成 `Dockerfile` (26:10)
+
+* 完成 `.dockerignore` (33:25) 
+
+* 完成 `.github/workflows/main.yml` (34:45) 
+
+* 介紹 Github action
+
+* Github commit (1:11:00)
+  > ```bash
+  > git remote -v
+  > git add .
+  > git commit -m "dockerfile and workflow updated"
+  > git push origin main
+  > ```
+
+* login Docker Hub
+
+* login AWS
+> EC2 -- launch instance 
+> > Name: `CNNApp`
+> > 
+> > AMI: select a free tier eligible
+> > 
+> > instance type: `t2.medium`
+> > 
+> > Key pair: create new key pair
+> > > key pair name: `CNNaplication`
+> > > 
+> > > key pair type: `RSA`
+> > > 
+> > > private key file format: `.pem`
+> >
+> > Firewall: create security group
+> > 
+> > Configure storage: `16` GiB `gp2` Root volume
+>
+> Done! Then, click `connect`
+>
+> IAM -- Users: click `create user` (username: `deployment`)
 
 ## Tech Issue
 
