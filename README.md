@@ -104,27 +104,67 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 * login Docker Hub
 
 * login AWS
-> EC2 -- launch instance 
-> > Name: `CNNApp`
-> > 
-> > AMI: select a free tier eligible
-> > 
-> > instance type: `t2.medium`
-> > 
-> > Key pair: create new key pair
-> > > key pair name: `CNNaplication`
-> > > 
-> > > key pair type: `RSA`
-> > > 
-> > > private key file format: `.pem`
-> >
-> > Firewall: create security group
-> > 
-> > Configure storage: `16` GiB `gp2` Root volume
->
-> Done! Then, click `connect`
->
-> IAM -- Users: click `create user` (username: `deployment`)
+ > EC2 -- launch instance 
+ > > Name: `CNNApp`
+ > > 
+ > > AMI: select a free tier eligible
+ > > 
+ > > instance type: `t2.medium`
+ > > 
+ > > Key pair: create new key pair
+ > > > key pair name: `CNNaplication`
+ > > > 
+ > > > key pair type: `RSA`
+ > > > 
+ > > > private key file format: `.pem`
+ > >
+ > > Firewall: create security group
+ > > 
+ > > Configure storage: `16` GiB `gp2` Root volume
+ >
+ > Done! Then, click `connect`
+ >
+ > IAM -- Users: click `create user` (username: `deployment`) -- Permissions summary: `AdministratorAccess`
+ > > Done! Then, click `create access key` -- `Comand Line Interface (CLI)`
+ > > 
+ > > `Download .csv`
+
+* Github -- setting -- Secrets and variables -- Secrets (Tab) -- click `New repository secret`
+ > * DOCKER_USERNAME
+ >
+ > * DOCKER_PASSWORD
+ >
+ > * AWS_REGION: `us-east-1`
+ >
+ > * REGISTRY: 自己 Docker 的 username
+ >
+ > * IMAGE_NAME: `cnnapp`
+ >
+ > * AWS_ACCESS_KEY_ID
+ >
+ > * AWS_SECRET_ACCESS_KEY
+
+* 打開 [Actions -- Runners 設定頁面](https://github.com/henrykohl/deeplearningupdatedwithstreamlit/settings/actions/runners/new) 同時連線 AWS ec2 (connect) 打開 CLI
+
+* Install Docker on AWS ec2 Linux machine
+ > ```bash
+ > sudo apt-get update -y
+ > sudo apt-get upgrade
+ > curl -fsSL https://get.docker.com -o get-docker.sh
+ > sudo sh get-docker.sh
+ > docker # test
+ > docker --help # test
+ > docker images # 檢查是否有 images (但此時顯示 permission denied)
+ > 
+ > sudo usermod -aG docker ubuntu
+ > newgrp docker
+ > docker images # 此時應該是空的
+ > docker ps -a  # 此時應該是空的 (the container is nor running)
+ > ```
+
+* 繼續 (1:52:40 ) -- 根據 [Github runners](https://github.com/henrykohl/deeplearningupdatedwithstreamlit/settings/actions/runners/new)
+> 
+
 
 ## Tech Issue
 
