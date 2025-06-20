@@ -162,10 +162,23 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
  > docker ps -a  # 此時應該是空的 (the container is nor running)
  > ```
 
-* 繼續 (1:52:40 ) -- 根據 [Github runners](https://github.com/henrykohl/deeplearningupdatedwithstreamlit/settings/actions/runners/new)
-> 
+* 繼續 (1:52:40 ) -- 根據 [Github runners](https://github.com/henrykohl/deeplearningupdatedwithstreamlit/settings/actions/runners/new) with Linux system
+ > ```bash
+ > curl -o actions-runner-linux-x64-2.313.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.313.0/actions-runner-linux-x64_2.313.0.tar.gz
+ > echo "5020da7139d85c776059f351e0de8fdec753affc9c558e892472d43ebeb518f4  actions-runner-linux-x64-2.325.0.tar.gz" | shasum -a 256 -c
+ > tar xzf ./actions-runner-linux-x64-2.325.0.tar.gz
+ > ./config.sh --url https://github.com/henrykohl/deeplearningupdatedwithstreamlit --token AKJGI45JLAC4GYXWGFL45C3IKRIQC
+ >
+ > # 連續四個設定都用 default setting即可 (按下 Enter)
+ > ./run.sh
+ > ```
 
-
+* AWS EC2 instance -- Security group -- inbound rules -- Edit inbound rules
+ >  Select `custom TCP`, port `8501`, source `0.0.0.0/0`
+ >
+ > click `Add rule`
+ 
+  
 ## Tech Issue
 
 * Error : RuntimeError: Tried to instantiate class ‘__path__._path’, but it does not exist! Ensure that it is registered via torch::class_
