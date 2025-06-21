@@ -18,16 +18,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          repository: sunnysavita10/deeplearningupdatedwithstreamlit
+        with: #Lecture 7 沒有此，因而出錯
+          repository: sunnysavita10/deeplearningupdatedwithstreamlit # sunnysavita10 要改
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: main
+          ref: main # branch name
 
       - name: Lint code
-        run: echo "Linting repository"
+        run: echo "Linting repository" # 印出 訊息
 
       - name: Run unit tests
-        run: echo "Running unit tests"
+        run: echo "Running unit tests" # 印出 訊息
       
 
 

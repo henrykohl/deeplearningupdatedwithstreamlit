@@ -210,6 +210,8 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 * Workflow
   > for automating each and everything, writing a workflow file - `main.yaml` (.githib/workflow/main.yaml)
+  > > whenever pushing the code from the local to GitHub 
+so automatically this workflow will be triggered and this pipeline will be executed
   >
   > By using the workflow/main.yaml, achieving CI / CD / CD'
   > > CI: integrate the source code and keep/push the source code to the GitHub
@@ -218,14 +220,15 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 * Summary of workflow architecture
   > local sys(source code) --1--> 
-  > github(github-Action) 例如 Linux server --2--> 
+  > github(github-Action, doing CI&CD) 例如 Linux server --2--> 
   > Docker Hub(Registry) --3--> 
-  > AWS-EC2(Cloud-Server)
+  > AWS-EC2(Cloud-Server, doing CD')
       
   > 1: CI & test \
-  > 2: CD \
-  > 3: CD' (self-hosted)
+  > 2: CD (push to Docker Hub)\
+  > 3: CD' (pull from Docker Hub), self-hosted service
 
+### Review the code (28:50)
 
 ## Tech Issue
 
