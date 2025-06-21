@@ -177,8 +177,21 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
  >  Select `custom TCP`, port `8501`, source `0.0.0.0/0`
  >
  > click `Add rule`
- 
-  
+
+* (1:59:50)
+ > ```bash
+ > git add . 
+ > git commit -m "changes done"
+ > git push origin main
+ > ```
+
+
+## Lecture 8 -- [Deployment with CICD Part -2](https://www.youtube.com/watch?v=TmSGVD2QBKA)
+
+### workflow recap (17:00)
+
+* 
+
 ## Tech Issue
 
 * Error : RuntimeError: Tried to instantiate class ‘__path__._path’, but it does not exist! Ensure that it is registered via torch::class_
