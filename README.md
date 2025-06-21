@@ -190,7 +190,42 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 ### workflow recap (17:00)
 
-* 
+1. Source code -- in GitHub
+
+2. Dockerfile
+
+3. Docker image
+
+4. Docker hub
+
+5. EC2 -> AWS
+
+6. Installing Docker and running
+
+* GitHub
+  > providing me a service -- [Github-Action] -- providing me a Server -- [Win/Linux/Mac]
+
+
+
+
+* Workflow
+  > for automating each and everything, writing a workflow file - `main.yaml` (.githib/workflow/main.yaml)
+  >
+  > By using the workflow/main.yaml, achieving CI / CD / CD'
+  > > CI: integrate the source code and keep/push the source code to the GitHub
+  > > 
+  > > CD: push the image to the Docker Hub
+
+* Summary of workflow architecture
+  > local sys(source code) --1--> 
+  > github(github-Action) 例如 Linux server --2--> 
+  > Docker Hub(Registry) --3--> 
+  > AWS-EC2(Cloud-Server)
+      
+  > 1: CI & test \
+  > 2: CD \
+  > 3: CD' (self-hosted)
+
 
 ## Tech Issue
 
