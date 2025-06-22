@@ -34,10 +34,10 @@ jobs:
   # push to my Docker Hub
   push_to_registry:
     name: Push Docker image to Docker hub
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # using the same GitHub action machine
     steps:
       - name: Checkout out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # finding out the repository
   
       - name: Setup Docker Build
         uses: docker/setup-buildx-action@v2
@@ -65,8 +65,8 @@ jobs:
 
   # use (my) selfhosted runner
   Continuous-Deployment:
-    needs: push_to_registry
-    runs-on: self-hosted
+    needs: push_to_registry # dependency
+    runs-on: self-hosted # not executing this step on top of GitHub action server, but running it on our/my machine 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -84,7 +84,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Pull images
+      - name: Pull images # pulling the image and running it insdie the container
         run: |
         
       - name: Run Docker Image to serve users
