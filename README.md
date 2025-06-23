@@ -272,7 +272,9 @@ git push origin main
 
 * (1:06:10) Push Docker image to Docker Hub (GitHub Actions) 完成: 可以(在Docker Hub)看到 image 已經 Docker Hub 上被成功建立
 
-* (1:06:17) 
+* (1:08:25) Continuout-Deployment (GitHub Actions) 出現錯誤
+
+* (1:12:50) 在 AWS ec2 instance 的 terminal 執行 `docker ps -a`，複製 CONTAINER ID，再次執行 `docker ps -a {剛剛複製的CONTAINER ID}`
 
 
 ---
