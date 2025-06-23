@@ -230,6 +230,53 @@ so automatically this workflow will be triggered and this pipeline will be execu
 
 ### Review the code (28:50)
 
+* explain `.github/workflows/main.yml`
+
+* (35:37)
+  > The 1st thing is source code. \
+  > The 2nd thins is Docker file inside your system. \
+  > The 3rd one is the configuration yaml file. \
+  > The 4th thing requires the particular credential 
+
+* You should have a Docker Hub account.
+
+* You should have to create the ec2 instance on the AWS
+
+* Add the secret inside the GitHub action
+
+### (41:55)
+
+* open Git Bash terminal
+
+```bash
+source activate base
+source activate ./venv # 假設 已經建立了 venv 虛擬環境
+```
+
+```bash 
+# 由於 main.yaml 中 comment更新
+git add .
+git commit -m "code updated please check"
+git push origin main
+```
+
+* (56:10) GitHub Action Runners 處於 `offline` 狀態，於是在 AWS ec2 instance 下 (若沒有連線，則需要 connect) terminal 執行 `./actions-runner/.run.sh` ， GitHub Action Runners 狀態改為 `Active`，最後成為 `Idle`。
+> 此時 GitHub Actions 中 Continuous-Deployment 中出現錯誤，而 AWS ec2 instance 的 terminal 也顯示 `Job Continuous-Deployment completed with result: Failed`！因此把 GitHub setting/secrets and variables/Actions 中的 IMAGE_NAME 的 value 改成 `mycnnimage` 
+>
+> 此時為了要再次 commit GitHub code，所以將 `app.py` 中的 comment 稍微更新一下，之後執行：
+> ```bash
+> git add .
+> git commit -m "code updated"
+> git push origin main
+> ```
+
+* (1:06:10) Push Docker image to Docker Hub (GitHub Actions) 完成: 可以(在Docker Hub)看到 image 已經 Docker Hub 上被成功建立
+
+* (1:06:17) 
+
+
+---
+
 ## Tech Issue
 
 * Error : RuntimeError: Tried to instantiate class ‘__path__._path’, but it does not exist! Ensure that it is registered via torch::class_
