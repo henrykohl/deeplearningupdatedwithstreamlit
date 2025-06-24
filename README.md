@@ -274,9 +274,15 @@ git push origin main
 
 * (1:08:25) Continuout-Deployment (GitHub Actions) 出現錯誤
 
-* (1:12:50) 在 AWS ec2 instance 的 terminal 執行 `docker ps -a`，複製 CONTAINER ID，再次執行 `docker ps -a {剛剛複製的CONTAINER ID}`
+* (1:12:50) 在 AWS ec2 instance 的 terminal 執行 `docker ps -a`，複製 CONTAINER ID，再次執行 `docker stop {剛剛複製的CONTAINER ID}`，(1:13:49) 接著執行 `docker ps -a` 或 `docker ps`，可以看到沒有 container 被執行。(1:15:02) 在 `/actions-runner`中執行 `./run.sh`
 
+* (1:15:29) 在 GitHub/Actions 中點選剛剛出錯的 workflow run，點選 `Re-run failed jobs`。(1:16:20) 還是出現相同錯誤錯
 
+* (1:17:08) 在 AWS ec2 instance 的 terminal 執行 `docker ps -a`，複製 CONTAINER ID，再次執行 `docker rm {剛剛複製的CONTAINER ID}`，接著執行 `docker ps -a`，可以看到有 container 被移除。
+
+* (1:18:51) 在 GitHub/Actions 中點選剛剛出錯的 workflow run，點選 `Re-run failed jobs`。這次問題解決了！
+
+* (1:19:47) 複製 AWS ec2 instance 的 public ip，再加上 `:8501` ，用到瀏覽器位置欄後開啟，
 ---
 
 ## Tech Issue
