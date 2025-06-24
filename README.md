@@ -282,8 +282,21 @@ git push origin main
 
 * (1:18:51) 在 GitHub/Actions 中點選剛剛出錯的 workflow run，點選 `Re-run failed jobs`。這次問題解決了！
 
-* (1:19:47) 複製 AWS ec2 instance 的 public ip，再加上 `:8501` ，用到瀏覽器位置欄後開啟，
+* (1:19:47) 複製 AWS ec2 instance 的 public ip，再加上 `:8501` ，輸入到瀏覽器位置欄後開啟，即可 demo 圖形辨識功能！
 ---
+
+## Quick Overview (1:28:23) 
+
+* 在 deeplearningupdatedwithstreamlit github repository 中新增 /.github/workflows/notebook/experiments.ipynb
+
+* 執行 `pip install pytest`
+
+* GOOGLE 查一下 **pytest** 與 **unittest**
+
+* 建立/完成 `test.py` 檔案(1:37:18)。執行 `pytest test.py` (1:38:49)
+
+* (1:43:25) 建立 test 資料夾，在 test 下建立 integrationtest 資料夾 與 unitest 資料夾，在 integrationtest 下建立 integration.py，在 unitest 下建立 unit.py
+
 
 ## Tech Issue
 
