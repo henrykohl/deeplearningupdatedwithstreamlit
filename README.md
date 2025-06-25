@@ -186,6 +186,7 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
  > ```
 
 
+
 ## Lecture 8 -- [Deployment with CICD Part -2](https://www.youtube.com/watch?v=TmSGVD2QBKA)
 
 ### workflow recap (17:00)
@@ -247,28 +248,27 @@ so automatically this workflow will be triggered and this pipeline will be execu
 ### (41:55)
 
 * open Git Bash terminal
+  > ```bash
+  > source activate base
+  > source activate ./venv # 假設 已經建立了 venv 虛擬環境
+  > ```
 
-```bash
-source activate base
-source activate ./venv # 假設 已經建立了 venv 虛擬環境
-```
-
-```bash 
-# 由於 main.yaml 中 comment更新
-git add .
-git commit -m "code updated please check"
-git push origin main
-```
+  > ```bash 
+  > # 由於 main.yaml 中 comment更新
+  > git add .
+  > git commit -m "code updated please check"
+  > git push origin main
+  > ```
 
 * (56:10) GitHub Action Runners 處於 `offline` 狀態，於是在 AWS ec2 instance 下 (若沒有連線，則需要 connect) terminal 執行 `./actions-runner/.run.sh` ， GitHub Action Runners 狀態改為 `Active`，最後成為 `Idle`。
-> 此時 GitHub Actions 中 Continuous-Deployment 中出現錯誤，而 AWS ec2 instance 的 terminal 也顯示 `Job Continuous-Deployment completed with result: Failed`！因此把 GitHub setting/secrets and variables/Actions 中的 IMAGE_NAME 的 value 改成 `mycnnimage` 
->
-> 此時為了要再次 commit GitHub code，所以將 `app.py` 中的 comment 稍微更新一下，之後執行：
-> ```bash
-> git add .
-> git commit -m "code updated"
-> git push origin main
-> ```
+  > 此時 GitHub Actions 中 Continuous-Deployment 中出現錯誤，而 AWS ec2 instance 的 terminal 也顯示 `Job Continuous-Deployment completed with result: Failed`！因此把 GitHub setting/secrets and variables/Actions 中的 IMAGE_NAME 的 value 改成 `mycnnimage` 
+  >
+  > 此時為了要再次 commit GitHub code，所以將 `app.py` 中的 comment 稍微更新一下，之後執行：
+  > ```bash
+  > git add .
+  > git commit -m "code updated"
+  > git push origin main
+  > ```
 
 * (1:06:10) Push Docker image to Docker Hub (GitHub Actions) 完成: 可以(在Docker Hub)看到 image 已經 Docker Hub 上被成功建立
 
@@ -283,13 +283,18 @@ git push origin main
 * (1:18:51) 在 GitHub/Actions 中點選剛剛出錯的 workflow run，點選 `Re-run failed jobs`。這次問題解決了！
 
 * (1:19:47) 複製 AWS ec2 instance 的 public ip，再加上 `:8501` ，輸入到瀏覽器位置欄後開啟，即可 demo 圖形辨識功能！
+
+* (1:22:10) 注意 AWS ec2 instance 中的 Security，進入 Security groups，在 inbound rules 中打開 Edit inbound rules，需要設定 Type 為 `Custom TCP` 且 Port 為 `8501` (by default, this Streamlit is running on `8501`. We expose in our Docker image & mention the expose instruction. So, we have to map it over here.) 
+
 ---
 
-## Quick Overview (1:28:23) 
+### Quick Overview (1:28:23) 
+
+how we can test our application at the time of integration. It's development level testing (1:26:35)
 
 * 在 deeplearningupdatedwithstreamlit github repository 中新增 /.github/workflows/notebook/experiments.ipynb
 
-* 執行 `pip install pytest`
+* 執行 `pip install pytest` (VS Code terminal)
 
 * GOOGLE 查一下 **pytest** 與 **unittest**
 
@@ -305,4 +310,4 @@ git push origin main
 * Reference Solution 1: [Fixing the “RuntimeError: Tried to instantiate class ‘__path__._path’...](https://medium.com/@subash_68978/1b4d1d99509d)
 
 * Reference Solution 2: [Trying to import torch results in asyncio RuntimeError](https://github.com/streamlit/streamlit/issues/10992)
-> 執行 `streamlit run myapp.py --server.fileWatcherType none` (實測可行)
+  > 執行 `streamlit run myapp.py --server.fileWatcherType none` (實測可行)
